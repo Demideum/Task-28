@@ -1,0 +1,44 @@
+namespace IJunior_Task28
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int numberOfArrayItems = 10;
+            int minRandomNumber = 0;
+            int maxRandomNumber = 10;
+            int shiftАmount;
+            int temporaryValue;
+
+            int[] array = new int[numberOfArrayItems];
+            Random random = new Random();
+
+            Console.WriteLine("Исходный массив: ");
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = random.Next(minRandomNumber, maxRandomNumber);
+
+                Console.Write($"{array[i]} ");
+            }
+            Console.Write("\n\nУкажите колличество сдвигов массива влево: ");
+            shiftАmount = Convert.ToInt32(Console.ReadLine());
+
+            while (shiftАmount-- > 0)
+            {
+                temporaryValue = array[0];
+                for (int i = 0; i < array.Length - 1; i++)
+                {
+                    array[i] = array[i + 1];
+                }
+                array[array.Length - 1] = temporaryValue;
+            }
+            Console.WriteLine($"\n\nМассив после сдвига позиций влево: ");
+
+            foreach (int value in array)
+            {
+                Console.Write($"{value} ");
+            }
+        }
+    }
+}
